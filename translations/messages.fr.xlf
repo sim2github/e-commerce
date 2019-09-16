@@ -299,7 +299,7 @@
       </trans-unit>
       <trans-unit id="CMGm_.U" resname="product.total_price">
         <source>product.total_price</source>
-        <target>Total: {order_transaction_total{}} €</target>
+        <target>Total: {order_transaction_total} €</target>
       </trans-unit>
       <trans-unit id="AsGpMnx" resname="product.name">
         <source>product.name</source>
