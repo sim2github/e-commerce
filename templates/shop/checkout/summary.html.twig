@@ -1,16 +1,16 @@
 {% extends 'shop/layout.html.twig' %}
-{% block title %}Récapitulatif{% endblock %}
+{% block title %}{{ 'user.summary'|trans }}{% endblock %}
 
 {% block breadcrumb %}
 <div class="breadcrumbs">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item">Identification</li>
-                <li class="breadcrumb-item">Adresse</li>
-                <li class="breadcrumb-item">Livraison</li>
-                <li class="breadcrumb-item active" aria-current="page">Récapitulatif</li>
-                <li class="breadcrumb-item">Paiement</li>
+                <li class="breadcrumb-item">{{ 'user.identification'|trans }}</li>
+                <li class="breadcrumb-item">{{ 'user.address'|trans }}</li>
+                <li class="breadcrumb-item">{{ 'base.delivery'|trans }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ 'user.summary'|trans }}</li>
+                <li class="breadcrumb-item">{{ 'base.payment'|trans }}</li>
             </ol>
         </nav>
     </div>
@@ -19,34 +19,34 @@
 
 {% block shop_content %}
 <header class="mb-4">
-    <h1>Récapitulatif</h1>
+    <h1>{{ 'user.summary'|trans }}</h1>
 </header>
 
 <table class="table">
     <thead>
         <tr class="row">
-            <th class="col-6">Produit</th>
-            <th class="col">Quantité</th>
-            <th class="col">Total</th>
+            <th class="col-6">{{ 'product.product'|trans }}</th>
+            <th class="col">{{ 'product.quantity'|trans }}</th>
+            <th class="col">{{ 'order.total'|trans }}</th>
         </tr>
     </thead>
     <tbody>
         {% for product in products %}
-            <tr class="row">
-                <td class="col-6">
-                    <div class="row">
-                        {% set image = product.images|first %}
-                        <div class="col">
-                            <img src="/img/upload/{{ image.name }}" alt="{{ image.description }}" class="img img-fluid">
-                        </div>
-                        <div class="col">
-                            {{ product.name }}
-                        </div>
+        <tr class="row">
+            <td class="col-6">
+                <div class="row">
+                    {% set image = product.images|first %}
+                    <div class="col">
+                        <img src="/img/upload/{{ image.name }}" alt="{{ image.description }}" class="img img-fluid">
                     </div>
-                </td>
-                <td class="col">{{ product.quantity }}</td>
-                <td class="col">{{ product.calcTotalPrice }} €</td>
-            </tr>
+                    <div class="col">
+                        {{ product.name }}
+                    </div>
+                </div>
+            </td>
+            <td class="col">{{ product.quantity }}</td>
+            <td class="col">{{ product.calcTotalPrice }} €</td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>
@@ -54,23 +54,24 @@
 <div class="d-flex justify-content-end">
     <div>
         <p>
-            <span class="font-weight-bold">Sous total:</span> {{ total_price }} €
+            <span class="font-weight-bold">{{ 'base.sub_total'|trans }}</span> {{ total_price }}
+            {{ 'base.currency_symbol'|trans }}
         </p>
         <p>
-            <span class="font-weight-bold">Livraison:</span>
+            <span class="font-weight-bold">{{ 'base.delivery'|trans }}:</span>
             {% if shipping_fee == 0 %}
-                gratuite
+            {{ 'base.free'|trans }}
             {% else %}
-                {{ shipping_fee }} €
+            {{ shipping_fee }} {{ 'base.currency_symbol'|trans }}
             {% endif %}
         </p>
         <p>
-            <span class="font-weight-bold">Dont TVA:</span>
-            {{ vat_price }} €
+            <span class="font-weight-bold">{{ 'pay.include_VAT'|trans }}</span>
+            {{ vat_price }} {{ 'base.currency_symbol'|trans }}
         </p>
         <p>
-            <span class="font-weight-bold">Total à payer:</span>
-            {{ grand_total }} €
+            <span class="font-weight-bold">{{ 'pay.total_to_pay'|trans }}</span>
+            {{ grand_total }} {{ 'base.currency_symbol'|trans }}
         </p>
     </div>
 </div>

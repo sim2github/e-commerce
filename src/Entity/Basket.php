@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -37,7 +38,7 @@ class Basket implements \Countable
 
         $this->session->set('products', $products);
     }
-    
+
     public function update(Product $product, int $quantity)
     {
         $products = $this->all();
@@ -46,10 +47,10 @@ class Basket implements \Countable
             'id' => $product->getId(),
             'quantity' => $quantity,
         ];
-        
+
         $this->session->set('products', $products);
     }
-    
+
     public function remove(Product $product)
     {
         $products = $this->all();
@@ -75,7 +76,7 @@ class Basket implements \Countable
             $products = $this->objectManager
                 ->getRepository(Product::class)
                 ->findAllById($ids);
-            
+
             return $products = array_map(
                 function ($p) {
                     return $p->setQuantity($this->getQuantity($p));
@@ -92,7 +93,7 @@ class Basket implements \Countable
         return $this->all()[$product->getId()]['quantity'];
     }
 
-    public function hasProduct(string $key): bool
+    public function hasProduct(int $key): bool
     {
         return isset($this->all()[$key]);
     }

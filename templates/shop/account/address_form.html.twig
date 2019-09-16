@@ -1,24 +1,24 @@
 {{ form_row(address_form.address1, {
-    'label': 'Rue',
+    'label': 'user.street'|trans,
 }) }}
 {{ form_row(address_form.address2, {
-    'label': 'Complément',
+    'label': 'user.complement'|trans,
     'required': false,
     'attr': {
-        'placeholder': 'appartement, étage, escalier, etc.',
+        'placeholder': 'user.address_placeholder'|trans,
     },
 }) }}
 <div class="form-row">
     <div class="col form-group">
-        {{ form_label(address_form.postCode, 'Code postal') }}
+        {{ form_label(address_form.postCode, 'user.postal_code'|trans) }}
         {{ form_widget(address_form.postCode) }}
     </div>
     <div class="col form-group">
-        {{ form_label(address_form.city, 'Ville') }}
+        {{ form_label(address_form.city, 'user.city'|trans) }}
         {{ form_widget(address_form.city) }}
     </div>
 </div>
 {{ form_row(address_form.phone, {
-    'label': 'Téléphone',
+    'label': 'user.phone'|trans,
     'required': false,
 }) }}

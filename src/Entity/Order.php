@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OrderRepository")
@@ -74,10 +75,13 @@ class Order
      */
     private $shippingMethod;
 
-    public function __construct()
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
     {
         $this->products = new ArrayCollection();
         $this->dateCreated = new \DateTime();
+        $this->translator = $translator;
     }
 
     public function create(Basket $basket)
@@ -208,7 +212,7 @@ class Order
     public function setStatus(string $status): self
     {
         if (!in_array($status, self::STATUSES)) {
-            throw new \InvalidArgumentException('Invalid order status');
+            throw new \InvalidArgumentException($this->translator->trans('order.invalid_status'));
         }
 
         $this->status = $status;

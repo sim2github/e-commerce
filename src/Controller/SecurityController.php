@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,6 +12,7 @@ use App\Form\ChangePasswordType;
 use App\Form\Model\ChangePassword;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SecurityController extends AbstractController
 {
@@ -24,7 +26,7 @@ class SecurityController extends AbstractController
         $form = $this->createForm(LoginType::class, $user, [
             'action' => $this->generateUrl('security_login'),
         ]);
-        
+
         return $this->render('shop/account/login_form.html.twig', [
             'loginForm' => $form->createView(),
             'error' => $error,
@@ -33,7 +35,7 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    public function register(UserPasswordEncoderInterface $passwordEncoder, ?bool $order): Response
+    public function register(UserPasswordEncoderInterface $passwordEncoder, ?bool $order, TranslatorInterface $translator): Response
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user, [
@@ -42,7 +44,7 @@ class SecurityController extends AbstractController
 
         $masterRequest = $this->get('request_stack')->getMasterRequest();
         $form->handleRequest($masterRequest);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
@@ -50,15 +52,15 @@ class SecurityController extends AbstractController
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
-            
+
             try {
                 $em->flush();
             } catch (\Exception $e) {
-                $this->addFlash('warning', 'Cette adresse email est déjà utilisée');
+                $this->addFlash('warning', $translator->trans('user.email_in_use'));
                 return $this->redirectToRoute('user_welcome');
             }
 
-            $this->addFlash('success', 'Compte créé. Vous pouvez maintenant vous connecter');
+            $this->addFlash('success', '');
         }
 
         return $this->render('shop/account/register_form.html.twig', [
@@ -67,26 +69,26 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    public function changePassword(Request $req, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function changePassword(Request $req, UserPasswordEncoderInterface $passwordEncoder, TranslatorInterface $translator): Response
     {
         $changePassword = new changePassword();
 
         $form = $this->createForm(changePasswordType::class, $changePassword);
 
         $form->handleRequest($req);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
-            
+
             $newPassword = $passwordEncoder->encodePassword($user, $changePassword->getNewPassword());
-            
+
             $user->setPassword($newPassword);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('success', 'Mot de passe changé');
+            $this->addFlash('success', $translator->trans('user.password_changed'));
 
             return $this->redirectToRoute('user_account');
         }

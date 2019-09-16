@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 use Symfony\Component\Validator\Mapping\ClassMetadata;
@@ -29,12 +30,12 @@ class Image
      * @ORM\Column(type="string")
      */
     private $name;
-    
+
     /**
      * @ORM\Column(type="string")
      */
     private $description;
-    
+
     /**
      * @ORM\Column(type="integer")
      */
@@ -43,7 +44,7 @@ class Image
     /**
      * The uploaded file
      *
-     * @var [UploadedFile]
+     * @var UploadedFile|null
      */
     private $file;
 
@@ -64,27 +65,27 @@ class Image
     {
         return $this->product;
     }
-    
+
     public function getName(): ?string
     {
         return $this->name;
     }
-    
+
     public function getDescription(): ?string
     {
         return $this->description;
     }
-    
+
     public function getSize(): int
     {
         return $this->size;
     }
-    
+
     public function getFile(): ?UploadedFile
     {
         return $this->file;
     }
-    
+
     public function setProduct(Product $product)
     {
         $this->product = $product;
@@ -94,17 +95,17 @@ class Image
     {
         $this->name = $name;
     }
-    
+
     public function setDescription(string $description)
     {
         $this->description = $description;
     }
-    
+
     public function setSize(int $size)
     {
         $this->size = $size;
     }
-    
+
     public function setFile(UploadedFile $file)
     {
         $this->file = $file;

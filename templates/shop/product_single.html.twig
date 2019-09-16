@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{ path('index') }}">Accueil</a>
+                    <a href="{{ path('index') }}">{{ 'base.home'|trans }}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
             </ol>
@@ -20,16 +20,18 @@
     <div class="col-md-5 pr-md-5 mb-4 mb-md-0">
         {% set cover = product.images|first %}
         <div class="image-container">
-            <img src="/img/upload/{{ cover.name }}" alt="{{ cover.description }}" class="img img-fluid product-single__image">
+            <img src="/img/upload/{{ cover.name }}" alt="{{ cover.description }}"
+                class="img img-fluid product-single__image">
         </div>
         {% if product.images.count > 1 %}
-            <div class="d-flex mt-2">
-                {% for image in product.images[1:] %}
-                    <div class="mr-2 image-container w-25">
-                        <img src="/img/upload/{{ image.name }}" alt="{{ image.description }}" class="img img-fluid product-single__image">
-                    </div>
-                {% endfor %}
+        <div class="d-flex mt-2">
+            {% for image in product.images[1:] %}
+            <div class="mr-2 image-container w-25">
+                <img src="/img/upload/{{ image.name }}" alt="{{ image.description }}"
+                    class="img img-fluid product-single__image">
             </div>
+            {% endfor %}
+        </div>
         {% endif %}
     </div>
     <div class="col-md-7">
@@ -39,12 +41,12 @@
         <p class="product-single__price">{{ product.price }} €</p>
         <div class="basket-add mb-4">
             {% if product.hasStock %}
-                <a href="/basket/add/{{ product.id }}" class="btn btn-primary">
-                    <i class="fas fa-shopping-cart mr-2"></i>
-                    Ajouter au panier
-                </a>
+            <a href="/basket/add/{{ product.id }}" class="btn btn-primary">
+                <i class="fas fa-shopping-cart mr-2"></i>
+                {{ 'base.add_to_cart'|trans }}
+            </a>
             {% else %}
-                <a href="#" class="btn btn-secondary disabled">Rupture de stock</a>
+            <a href="#" class="btn btn-secondary disabled">{{ 'base.sold_out'|trans }}</a>
             {% endif %}
         </div>
         <p>
@@ -72,5 +74,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="/js/productSlider.js"></script>
+<script src="/js/productSlider.js"></script>
 {% endblock javascripts %}

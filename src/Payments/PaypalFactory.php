@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Payments;
 
 use PayPal\Api\Amount;
@@ -27,11 +28,12 @@ class PaypalFactory
 
         foreach ($products as $product) {
             $item = (new Item())
-                 ->setName($product->getName())
-                 ->setCurrency('EUR')
-                 ->setQuantity($product->getQuantity())
-                 ->setPrice($product->getPrice());
-            
+                ->setName($product->getName())
+                //TODO: hardcoded value of currency
+                ->setCurrency('EUR')
+                ->setQuantity($product->getQuantity())
+                ->setPrice($product->getPrice());
+
             $itemList->addItem($item);
         }
 
@@ -43,6 +45,7 @@ class PaypalFactory
             ->setSubtotal($subTotal);
 
         $amount = (new Amount())
+            //TODO: hardcoded value of currency
             ->setCurrency('EUR')
             ->setTotal($basket->grandTotal())
             ->setDetails($details);

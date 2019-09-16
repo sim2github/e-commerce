@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -8,6 +9,7 @@ use App\Form\ProductType;
 use App\Entity\Product;
 use App\Entity\Image;
 use App\Service\Slugger;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class ProductController extends AbstractController
 {
@@ -16,15 +18,15 @@ class ProductController extends AbstractController
         $form = $this->createFormBuilder()
             ->add('search', SearchType::class)
             ->getForm();
-        
+
         $form->handleRequest($req);
-            
+
         $maxResults = 10;
         $firstResult = $maxResults * ($page - 1);
-       
+
         if ($form->isSubmitted() && $form->isValid()) {
             $query = $form->getData();
-            
+
             $products = $this->getDoctrine()
                 ->getRepository(Product::class)
                 ->search($query['search'], $firstResult, $maxResults);
@@ -33,7 +35,7 @@ class ProductController extends AbstractController
                 ->getRepository(Product::class)
                 ->getPaginated($firstResult, $maxResults);
         }
-        
+
         $totalResults = count($products);
         $totalPages = 1;
         if ($totalResults > 0) {
@@ -47,22 +49,24 @@ class ProductController extends AbstractController
             'current_page' => $page,
         ]);
     }
-    
-    public function editor(Request $req, $id, Slugger $slugger)
+
+    public function editor(Request $req, $id, Slugger $slugger, TranslatorInterface $translator)
     {
         $product = new Product();
-        $title = 'Nouveau produit';
-        
+        $title = $translator->trans('product.new');
+
         if ($id) {
             $product = $this->getDoctrine()
                 ->getRepository(Product::class)
                 ->find($id);
-            
+
             if (!$product) {
-                throw $this->createNotFoundException('Ce produit n\'existe pas');
+                throw $this->createNotFoundException(
+                    $translator->trans('product.not_exist')
+                );
             }
-            
-            $title = 'Modification d\'un produit';
+
+            $title = $translator->trans('product.edit');
         } else {
             $product->addImage(new Image());
         }
@@ -81,16 +85,16 @@ class ProductController extends AbstractController
                     $file->move($this->getParameter('images_directory'), $filename);
                 }
             }
-            
+
             $slug = $slugger->slugify($product);
             $product->setSlug($slug);
-            
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
-            
-            $this->addFlash('success', 'Produit ajouté');
-            
+
+            $this->addFlash('success', $translator->trans('product.added'));
+
             return $this->redirect($this->generateUrl('admin_product-editor', [
                 'id' => $product->getId(),
             ]));
@@ -102,17 +106,17 @@ class ProductController extends AbstractController
         ]);
     }
 
-    public function delete($id)
+    public function delete($id, TranslatorInterface $translator)
     {
         $em = $this->getDoctrine()->getManager();
-       
+
         $product = $em->getRepository(Product::class)->find($id);
         $product->setDeletedAt(new \Datetime());
-        
+
         $em->persist($product);
         $em->flush();
 
-        $this->addFlash('success', 'Produit supprimé');
+        $this->addFlash('success', $translator->trans('product.deleted'));
 
         return $this->redirectToRoute('admin_index');
     }

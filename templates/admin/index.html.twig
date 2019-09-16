@@ -1,11 +1,10 @@
 {% extends 'admin/layout.html.twig' %}
-{% block title %}Administration{% endblock title %}
+{% block title %}{{ 'base.administration'|trans }}{% endblock title %}
 
 {% block admin_content %}
-    <header class="mb-4">
-        <h1>Administration</h1>
-    </header>
-    <p>{{ product_rows }} produits en vente</p>
-    <p>{{ total_revenue }} € de chiffre d'affaires</p>
-
+<header class="mb-4">
+    <h1>{{ 'base.administration'|trans }}</h1>
+</header>
+<p>{{ 'product.products_for_sale'|trans({'%product_rows%': product_rows}) }}</p>
+<p>{{ 'product.turn_over'|trans({'%total_revenue%': total_revenue}) }}</p>
 {% endblock %}

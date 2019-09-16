@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Entity;
 
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -53,7 +55,7 @@ class Product
      * @ORM\Column(type="decimal", scale=3)
      */
     private $weight;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="product", cascade={"persist"})
      */
@@ -84,29 +86,29 @@ class Product
         $this->deletedAt = date_create('0000-00-00 00:00:00');
     }
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    public static function loadValidatorMetadata(ClassMetadata $metadata, TranslatorInterface $translator)
     {
         $metadata->addPropertyConstraint('name', new Assert\Type('string'));
         $metadata->addPropertyConstraint('name', new Assert\NotNull());
-        
+
         $metadata->addPropertyConstraint('description', new Assert\Type('string'));
         $metadata->addPropertyConstraint('description', new Assert\NotNull());
-        
+
         $metadata->addPropertyConstraint('category', new Assert\Type('string'));
         $metadata->addPropertyConstraint('category', new Assert\NotNull());
-        
+
         $metadata->addPropertyConstraint('stock', new Assert\Type('int'));
         $metadata->addPropertyConstraint('stock', new Assert\NotNull());
-        
+
         $metadata->addPropertyConstraint('price', new Assert\NotNull());
-        
+
         $metadata->addPropertyConstraint('weight', new Assert\NotNull());
-        
+
         $metadata->addPropertyConstraint('images', new Assert\Count([
             'min' => 1,
             'max' => 3,
-            'minMessage' => 'Chaque produit doit avoir au moins une image',
-            'maxMessage' => 'Un produit ne peut pas avoir plus de trois images'
+            'minMessage' => $translator->trans('product.must_have_image'),
+            'maxMessage' => $translator->trans('product.must_have_less_images')
         ]));
         $metadata->addPropertyConstraint('images', new Assert\Valid());
     }
@@ -155,7 +157,7 @@ class Product
     {
         return $this->images;
     }
-    
+
     public function getQuantity(): ?int
     {
         return $this->quantity;
@@ -207,7 +209,7 @@ class Product
     {
         return $this->stock > 0;
     }
-    
+
     public function calcTotalPrice(): float
     {
         return $this->quantity * $this->price;
@@ -216,7 +218,7 @@ class Product
     public function addImage(Image $image)
     {
         $image->setProduct($this);
-        
+
         $this->images->add($image);
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -8,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Basket;
 use App\Entity\Product;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class BasketController extends AbstractController
 {
@@ -34,12 +36,12 @@ class BasketController extends AbstractController
         ]);
     }
 
-    public function add($id)
+    public function add($id, TranslatorInterface $translator)
     {
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
             ->find($id);
-        
+
         if (!$product) {
             throw $this->createNotFoundException();
         }
@@ -47,7 +49,7 @@ class BasketController extends AbstractController
         if ($product->hasStock()) {
             $this->basket->add($product);
         } else {
-            $this->addFlash('primary', 'Le produit n\'est plus en stock');
+            $this->addFlash('primary', $translator->trans('product.out_of_stock'));
         }
 
         $slug = $product->getSlug();
@@ -62,7 +64,7 @@ class BasketController extends AbstractController
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
             ->find($id);
-        
+
         if (!$product) {
             throw $this->createNotFoundException();
         }
@@ -77,17 +79,17 @@ class BasketController extends AbstractController
         $data = json_decode($req->getContent(), true);
         $id = (int) $data['id'];
         $quantity = (int) $data['quantity'];
-       
+
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
             ->find($id);
-        
+
         if (!$product) {
             throw $this->createNotFoundException();
         }
 
         $this->basket->update($product, $quantity);
-            
+
         $products = $this->basket->getProducts();
         $totalPrice = $this->basket->totalPrice($products);
 

@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="oAMY.GP" resname="index.new">
+        <source>index.new</source>
+        <target>Nouveauté</target>
+      </trans-unit>
+      <trans-unit id="MSvpkHx" resname="base.my_account">
+        <source>base.my_account</source>
+        <target>Mon compte</target>
+      </trans-unit>
+      <trans-unit id="8M7UUxd" resname="base.connection">
+        <source>base.connection</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="RrVaGi4" resname="base.new_account">
+        <source>base.new_account</source>
+        <target>Nouveau compte</target>
+      </trans-unit>
+      <trans-unit id="SJy0l4c" resname="base.administration">
+        <source>base.administration</source>
+        <target>Administration</target>
+      </trans-unit>
+      <trans-unit id="ZyI54Ax" resname="base.logout">
+        <source>base.logout</source>
+        <target>Déconnexion</target>
+      </trans-unit>
+      <trans-unit id="kQOuqgc" resname="base.contact">
+        <source>base.contact</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="9xK2_Q5" resname="base.means_of_payment">
+        <source>base.means_of_payment</source>
+        <target>Moyens de paiment</target>
+      </trans-unit>
+      <trans-unit id="6KYC7HM" resname="base.delivery">
+        <source>base.delivery</source>
+        <target>Livraison</target>
+      </trans-unit>
+      <trans-unit id="XiCJdbr" resname="base.terms_of_sales">
+        <source>base.terms_of_sales</source>
+        <target>Conditions générales de vente</target>
+      </trans-unit>
+      <trans-unit id="APoJ9ga" resname="base.find_us_on">
+        <source>base.find_us_on</source>
+        <target>Retrouvez nous sur:</target>
+      </trans-unit>
+      <trans-unit id="tTxSmz_" resname="base.basket">
+        <source>base.basket</source>
+        <target>Panier</target>
+      </trans-unit>
+      <trans-unit id="SGgjhEo" resname="base.my_cart">
+        <source>base.my_cart</source>
+        <target>Mon panier</target>
+      </trans-unit>
+      <trans-unit id="TkXXOKX" resname="base.basket_empty">
+        <source>base.basket_empty</source>
+        <target>Le panier est vide.</target>
+      </trans-unit>
+      <trans-unit id="Ng3LXY6" resname="base.continue_shopping">
+        <source>base.continue_shopping</source>
+        <target>Continuer les achats</target>
+      </trans-unit>
+      <trans-unit id="XAoPCrv" resname="base.sub_total">
+        <source>base.sub_total</source>
+        <target>Sous total:</target>
+      </trans-unit>
+      <trans-unit id="2hkSkoG" resname="base.order">
+        <source>base.order</source>
+        <target>Commander</target>
+      </trans-unit>
+      <trans-unit id="SnJg.Ir" resname="base.home">
+        <source>base.home</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="oivFTNz" resname="base.add_to_cart">
+        <source>base.add_to_cart</source>
+        <target>Ajouter au panier</target>
+      </trans-unit>
+      <trans-unit id="wb2ytea" resname="base.sold_out">
+        <source>base.sold_out</source>
+        <target>Rupture de stock</target>
+      </trans-unit>
+      <trans-unit id="bCiO.mJ" resname="base.whats_new">
+        <source>base.whats_new</source>
+        <target>Nouveautés</target>
+      </trans-unit>
+      <trans-unit id="9ZqF51j" resname="base.order_confirmation">
+        <source>base.order_confirmation</source>
+        <target>Confirmation de commande</target>
+      </trans-unit>
+      <trans-unit id="LWCAGr1" resname="base.confirm_email_message">
+        <source>base.confirm_email_message</source>
+        <target>Merci pour votre commande, vous allez recevoir un email de confirmation.</target>
+      </trans-unit>
+      <trans-unit id="nqUg3kV" resname="product.products_for_sale">
+        <source>product.products_for_sale</source>
+        <target>{product_rows} produits en vente</target>
+      </trans-unit>
+      <trans-unit id="fAfdTi7" resname="product.turn_over">
+        <source>product.turn_over</source>
+        <target>{total_revenue} € de chiffre d'affaires</target>
+      </trans-unit>
+      <trans-unit id="feh8Pw8" resname="product.product">
+        <source>product.product</source>
+        <target>Produits</target>
+      </trans-unit>
+      <trans-unit id="pLIdzqt" resname="product.category">
+        <source>product.category</source>
+        <target>Catégorie</target>
+      </trans-unit>
+      <trans-unit id="dI3gmeh" resname="product.stock">
+        <source>product.stock</source>
+        <target>Stock</target>
+      </trans-unit>
+      <trans-unit id="Rheru0x" resname="product.no_result">
+        <source>product.no_result</source>
+        <target>Aucun résultat</target>
+      </trans-unit>
+      <trans-unit id="Z8BRia8" resname="product.previous">
+        <source>product.previous</source>
+        <target>Précédent</target>
+      </trans-unit>
+      <trans-unit id="jNrgtHZ" resname="product.next">
+        <source>product.next</source>
+        <target>Suivant</target>
+      </trans-unit>
+      <trans-unit id="KKKoPuG" resname="order.details">
+        <source>order.details</source>
+        <target>Details commande # {order_id}</target>
+      </trans-unit>
+      <trans-unit id="hoZTy3u" resname="order.id">
+        <source>order.id</source>
+        <target>Commande # {order_id}</target>
+      </trans-unit>
+      <trans-unit id="HfWKc6U" resname="base.date">
+        <source>base.date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="Ezv_KpG" resname="base.payment">
+        <source>base.payment</source>
+        <target>Paiement</target>
+      </trans-unit>
+      <trans-unit id="drtCLBC" resname="base.status">
+        <source>base.status</source>
+        <target>statut</target>
+      </trans-unit>
+      <trans-unit id="NFE0vS3" resname="order.traking_number">
+        <source>order.traking_number</source>
+        <target>Numéro de suivi</target>
+      </trans-unit>
+      <trans-unit id="jvaEsZM" resname="order.field_require">
+        <source>order.field_require</source>
+        <target>Ce champ est requis</target>
+      </trans-unit>
+      <trans-unit id="YaTPgrX" resname="order.thanks">
+        <source>order.thanks</source>
+        <target>Merci</target>
+      </trans-unit>
+      <trans-unit id="YfUYcGV" resname="user.email">
+        <source>user.email</source>
+        <target>email</target>
+      </trans-unit>
+      <trans-unit id="pVZ4m.T" resname="user.password">
+        <source>user.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="hJZz7Od" resname="user.password_change">
+        <source>user.password_change</source>
+        <target>Changer</target>
+      </trans-unit>
+      <trans-unit id="KGXIXnZ" resname="user.orders">
+        <source>user.orders</source>
+        <target>Commandes</target>
+      </trans-unit>
+      <trans-unit id="IiZ.YMB" resname="user.account">
+        <source>user.account</source>
+        <target>Compte</target>
+      </trans-unit>
+      <trans-unit id="7TyG8Qx" resname="order.no_order">
+        <source>order.no_order</source>
+        <target>Pas de commande pour l'instant.</target>
+      </trans-unit>
+      <trans-unit id="FJ5ybug" resname="order.status">
+        <source>order.status</source>
+        <target>Statut</target>
+      </trans-unit>
+      <trans-unit id="NyK8qOw" resname="order.total">
+        <source>order.total</source>
+        <target>Total</target>
+      </trans-unit>
+      <trans-unit id="j_GwRjm" resname="user.my_account">
+        <source>user.my_account</source>
+        <target>Mon compte</target>
+      </trans-unit>
+      <trans-unit id="eqVVlSq" resname="user.identification">
+        <source>user.identification</source>
+        <target>Identification</target>
+      </trans-unit>
+      <trans-unit id="8ZdggfC" resname="user.contact_info">
+        <source>user.contact_info</source>
+        <target>Coordonnées</target>
+      </trans-unit>
+      <trans-unit id="5Q6KKLi" resname="user.contact_billing_address">
+        <source>user.contact_billing_address</source>
+        <target>(adresse de facturation)</target>
+      </trans-unit>
+      <trans-unit id="FX3KkuQ" resname="save">
+        <source>save</source>
+        <target>Sauvegarder</target>
+      </trans-unit>
+      <trans-unit id="aJXysSK" resname="user.address">
+        <source>user.address</source>
+        <target>Adresse</target>
+      </trans-unit>
+      <trans-unit id="0kQoTDT" resname="user.summary">
+        <source>user.summary</source>
+        <target>Récapitulatif</target>
+      </trans-unit>
+      <trans-unit id="rkcJfIn" resname="user.welcome">
+        <source>user.welcome</source>
+        <target>Bienvenue</target>
+      </trans-unit>
+      <trans-unit id="wBcng8k" resname="user.already_have_account">
+        <source>user.already_have_account</source>
+        <target>J'ai déjà un compte</target>
+      </trans-unit>
+      <trans-unit id="PMoQlsS" resname="user.new_customer">
+        <source>user.new_customer</source>
+        <target>Nouveau client</target>
+      </trans-unit>
+      <trans-unit id="v5NIHUc" resname="user.street">
+        <source>user.street</source>
+        <target>Rue</target>
+      </trans-unit>
+      <trans-unit id="bTz.uQ3" resname="user.complement">
+        <source>user.complement</source>
+        <target>Complément</target>
+      </trans-unit>
+      <trans-unit id="R0JmKJo" resname="user.postal_code">
+        <source>user.postal_code</source>
+        <target>Code postal</target>
+      </trans-unit>
+      <trans-unit id="M2AaT0w" resname="user.city">
+        <source>user.city</source>
+        <target>Ville</target>
+      </trans-unit>
+      <trans-unit id="FxOibuo" resname="user.phone">
+        <source>user.phone</source>
+        <target>Téléphone</target>
+      </trans-unit>
+      <trans-unit id="l_gsLcf" resname="user.current_password">
+        <source>user.current_password</source>
+        <target>Mot de passe actuel</target>
+      </trans-unit>
+      <trans-unit id="CM4cJQ0" resname="user.new_password">
+        <source>user.new_password</source>
+        <target>Nouveau mot de passe</target>
+      </trans-unit>
+      <trans-unit id="StSI8tN" resname="user.repeat_password">
+        <source>user.repeat_password</source>
+        <target>Répéter mot de passe</target>
+      </trans-unit>
+      <trans-unit id="0LThcOB" resname="user.validate">
+        <source>user.validate</source>
+        <target>Valider</target>
+      </trans-unit>
+      <trans-unit id="zPJhxi6" resname="user.create">
+        <source>user.create</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id="z.kBcWW" resname="user.delivery_address">
+        <source>user.delivery_address</source>
+        <target>Adresse de livraison</target>
+      </trans-unit>
+      <trans-unit id="otBtgAA" resname="user.tel">
+        <source>user.tel</source>
+        <target>Tel</target>
+      </trans-unit>
+      <trans-unit id="csYaDw6" resname="user.billing_address">
+        <source>user.billing_address</source>
+        <target>Adresse de facturation</target>
+      </trans-unit>
+      <trans-unit id="qS7nuUm" resname="product.price">
+        <source>product.price</source>
+        <target>Prix</target>
+      </trans-unit>
+      <trans-unit id="84glqWm" resname="product.quantity">
+        <source>product.quantity</source>
+        <target>Quantité</target>
+      </trans-unit>
+      <trans-unit id="2_ii1AS" resname="product.shipping_price">
+        <source>product.shipping_price</source>
+        <target>Livraison: {order_shippingMethod_fee} €</target>
+      </trans-unit>
+      <trans-unit id="CMGm_.U" resname="product.total_price">
+        <source>product.total_price</source>
+        <target>Total: {order_transaction_total{}} €</target>
+      </trans-unit>
+      <trans-unit id="AsGpMnx" resname="product.name">
+        <source>product.name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="fUDKRZZ" resname="product.description">
+        <source>product.description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="wYS7ID6" resname="product.weight">
+        <source>product.weight</source>
+        <target>Poids</target>
+      </trans-unit>
+      <trans-unit id="UY4V61F" resname="product.images">
+        <source>product.images</source>
+        <target>Images</target>
+      </trans-unit>
+      <trans-unit id="RCY4rj." resname="product.basket">
+        <source>product.basket</source>
+        <target>Panier</target>
+      </trans-unit>
+      <trans-unit id="cUoCq7H" resname="product.my_basket">
+        <source>product.my_basket</source>
+        <target>Mon panier</target>
+      </trans-unit>
+      <trans-unit id="BBCMId6" resname="product.basket_empty">
+        <source>product.basket_empty</source>
+        <target>Le panier est vide.</target>
+      </trans-unit>
+      <trans-unit id="hK76FFs" resname="product.continue_shopping">
+        <source>product.continue_shopping</source>
+        <target>Continuer les achats</target>
+      </trans-unit>
+      <trans-unit id="U2fMtql" resname="product.all_products">
+        <source>product.all_products</source>
+        <target>Tous les produits</target>
+      </trans-unit>
+      <trans-unit id=".Z7IcE3" resname="product.search">
+        <source>product.search</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="YFG0Dlw" resname="product.add">
+        <source>product.add</source>
+        <target>Ajouter un produit</target>
+      </trans-unit>
+      <trans-unit id="B48vKZR" resname="base.currency_symbol">
+        <source>base.currency_symbol</source>
+        <target>€</target>
+      </trans-unit>
+      <trans-unit id="WOXe803" resname="user.my_orders">
+        <source>user.my_orders</source>
+        <target>Mes commandes</target>
+      </trans-unit>
+      <trans-unit id="aZP4WAM" resname="user.address_placeholder">
+        <source>user.address_placeholder</source>
+        <target>appartement, étage, escalier, etc.</target>
+      </trans-unit>
+      <trans-unit id="nRHNfCy" resname="user.password_changed">
+        <source>user.password_changed</source>
+        <target>Mot de passe changé</target>
+      </trans-unit>
+      <trans-unit id="mbSrXpx" resname="pay.by_cart">
+        <source>pay.by_cart</source>
+        <target>Par carte</target>
+      </trans-unit>
+      <trans-unit id="sbD.WEi" resname="pay.error">
+        <source>pay.error</source>
+        <target>Erreur</target>
+      </trans-unit>
+      <trans-unit id="wnVxmW1" resname="pay.number">
+        <source>pay.number</source>
+        <target>Numéro</target>
+      </trans-unit>
+      <trans-unit id="OpHDUvh" resname="pay.expiration_date">
+        <source>pay.expiration_date</source>
+        <target>Date d'expiration</target>
+      </trans-unit>
+      <trans-unit id="bfMqF1G" resname="pay.cryptogram">
+        <source>pay.cryptogram</source>
+        <target>Cryptogramme</target>
+      </trans-unit>
+      <trans-unit id="ug7V46G" resname="pay.total_price">
+        <source>pay.total_price</source>
+        <target>Payer {total_price} €</target>
+      </trans-unit>
+      <trans-unit id="g.EyKcy" resname="pay.with_paypal">
+        <source>pay.with_paypal</source>
+        <target>Avec paypal</target>
+      </trans-unit>
+      <trans-unit id="IMG00of" resname="pay.pay_with_paypal">
+        <source>pay.pay_with_paypal</source>
+        <target>Payer avec paypal</target>
+      </trans-unit>
+      <trans-unit id="m8ANTOT" resname="base.free">
+        <source>base.free</source>
+        <target>gratuite</target>
+      </trans-unit>
+      <trans-unit id="oUD7BBP" resname="pay.include_VAT">
+        <source>pay.include_VAT</source>
+        <target>Dont TVA:</target>
+      </trans-unit>
+      <trans-unit id="8PYe5Q0" resname="pay.total_to_pay">
+        <source>pay.total_to_pay</source>
+        <target>Total à payer:</target>
+      </trans-unit>
+      <trans-unit id="L0T2Ajx" resname="product.not_exist">
+        <source>product.not_exist</source>
+        <target>Ce produit n'existe pas</target>
+      </trans-unit>
+      <trans-unit id="kUcEAff" resname="product.new">
+        <source>product.new</source>
+        <target>Nouveau produit</target>
+      </trans-unit>
+      <trans-unit id="RStB7Se" resname="product.edit">
+        <source>product.edit</source>
+        <target>Modification d'un produit</target>
+      </trans-unit>
+      <trans-unit id="QNNRSnE" resname="product.added">
+        <source>product.added</source>
+        <target>Produit ajouté</target>
+      </trans-unit>
+      <trans-unit id="YMTk59T" resname="product.deleted">
+        <source>product.deleted</source>
+        <target>Produit supprimé</target>
+      </trans-unit>
+      <trans-unit id="6qSPZPn" resname="product.out_of_stock">
+        <source>product.out_of_stock</source>
+        <target>Le produit n\'est plus en stock</target>
+      </trans-unit>
+      <trans-unit id="t4TRXrE" resname="product.miss_billing_address">
+        <source>product.miss_billing_address</source>
+        <target>Veuillez renseigner une adresse de facturation avant de continuer</target>
+      </trans-unit>
+      <trans-unit id="5h8IUbB" resname="user.email_in_use">
+        <source>user.email_in_use</source>
+        <target>Cette adresse email est déjà utilisée</target>
+      </trans-unit>
+      <trans-unit id="sqRDO0I" resname="user.account_created">
+        <source>user.account_created</source>
+        <target>Compte créé. Vous pouvez maintenant vous connecter</target>
+      </trans-unit>
+      <trans-unit id="gvpnagJ" resname="order.invalid_status">
+        <source>order.invalid_status</source>
+        <target>Invalid order status</target>
+      </trans-unit>
+      <trans-unit id="MRujQld" resname="product.must_have_image">
+        <source>product.must_have_image</source>
+        <target>Chaque produit doit avoir au moins une image</target>
+      </trans-unit>
+      <trans-unit id="xEgU1Im" resname="product.must_have_less_images">
+        <source>product.must_have_less_images</source>
+        <target>Un produit ne peut pas avoir plus de trois images</target>
+      </trans-unit>
+      <trans-unit id="weR998U" resname="user.password_min">
+        <source>user.password_min</source>
+        <target>Le mot de passe doit faire au minimum {char} caractères</target>
+      </trans-unit>
+      <trans-unit id="1pcnT4z" resname="user.password_max">
+        <source>user.password_max</source>
+        <target>Le mot de passe doit faire au maximum {char} caractères</target>
+      </trans-unit>
+      <trans-unit id="YN.DByf" resname="order.email_confirm">
+        <source>order.email_confirm</source>
+        <target>Confirmation de commande</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

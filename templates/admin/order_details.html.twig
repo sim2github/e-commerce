@@ -1,27 +1,32 @@
 {% extends 'admin/layout.html.twig' %}
-{% block title %}Details commande # {{ order.id }}{% endblock title %}
+{% block title %}{{ 'order.details'|trans({'%order_id%': order.id})
+}}{% endblock title %}
 
 {% block admin_content %}
 <header class="mb-4">
-    <h1>Commande # {{ order.id }}</h1>
+    <h1>{{ 'order.id'|trans({'%order_id%': order.id})
+}}</h1>
 </header>
 
 <div class="row mb-5">
     <div class="col-md col-lg-4 mb-4 mb-md-0">
-        <p><span class="font-weight-bold">Date : </span>{{ order.dateCreated|date() }}</p>
-        <p><span class="font-weight-bold">Paiement : </span>{{ order.transaction.method|capitalize }}</p>
-        <p><span class="font-weight-bold">Livraison : </span>{{ order.shippingMethod.name|capitalize }}</p>
-        
+        <p><span class="font-weight-bold">{{ 'base.date'|trans }} : </span>{{ order.dateCreated|date() }}</p>
+        <p><span class="font-weight-bold">{{ 'base.payment'|trans }}: </span>{{ order.transaction.method|capitalize }}
+        </p>
+        <p><span class="font-weight-bold">{{ 'base.delivery'|trans }} :
+            </span>{{ order.shippingMethod.name|capitalize }}
+        </p>
+
         <div>
             {{ form_start(form) }}
-                {{ form_row(form.status, {
-                    'label': 'statut',
+            {{ form_row(form.status, {
+                    'label': 'base.status'|trans,
                 }) }}
-                {{ form_row(form.trackingNumber, {
-                    'label': 'Numéro de suivi',
+            {{ form_row(form.trackingNumber, {
+                    'label': 'order.traking_number'|trans,
                     'required': false,
                 }) }}
-                <input type="submit" value="Valider" class="btn btn-primary">
+            <input type="submit" value="{{ 'user.validate'|trans }}" class="btn btn-primary">
             {{ form_end(form) }}
         </div>
     </div>
@@ -29,34 +34,34 @@
     <div class="col-md col-lg-8 d-flex flex-column align-items-md-center">
         <div>
             <div class="shipping mb-4">
-                <h4>Adresse de livraison</h4>
+                <h4>{{ 'user.delivery_address'|trans }}</h4>
                 <div>
                     {% set shipping = order.shippingAddress %}
                     {{ order.user.firstName }}
                     {{ order.user.lastName }}<br>
                     {{ shipping.address1 }}<br>
                     {% if shipping.address2 is not null %}
-                        {{ shipping.address2 }}<br>
+                    {{ shipping.address2 }}<br>
                     {% endif %}
                     {{ shipping.postCode}}<br>
                     {{ shipping.city }}<br>
-                    <span>Tel:</span> {{ shipping.phone }}<br>
+                    <span>{{ 'user.tel'|trans }}:</span> {{ shipping.phone }}<br>
                 </div>
             </div>
 
             <div class="billing">
-                <h4>Adresse de facturation</h4>
+                <h4>{{ 'user.billing_address'|trans }}</h4>
                 <div>
                     {% set billing = order.billingAddress %}
                     {{ order.user.firstName }}
                     {{ order.user.lastName }}<br>
                     {{ billing.address1 }}<br>
                     {% if billing.address2 is not null %}
-                        {{ billing.address2 }}<br>
+                    {{ billing.address2 }}<br>
                     {% endif %}
                     {{ billing.postCode}}<br>
                     {{ billing.city }}<br>
-                    <span>Tel:</span> {{ shipping.phone }}<br>
+                    <span>{{ 'user.tel'|trans }}:</span> {{ shipping.phone }}<br>
                 </div>
             </div>
         </div>
@@ -67,40 +72,40 @@
 <table class="table">
     <thead class="thead-responsive">
         <tr class="row">
-            <th class="col-md-6 col-lg-4">Produit</th>
-            <th class="col-md-2 col-lg">Prix</th>
-            <th class="col-md-2 col-lg">Quantité</th>
-            <th class="col-md-2 col-lg">Total</th>
+            <th class="col-md-6 col-lg-4">{{ 'product.product'|trans }}</th>
+            <th class="col-md-2 col-lg">{{ 'product.price'|trans }}</th>
+            <th class="col-md-2 col-lg">{{ 'product.quantity'|trans }}</th>
+            <th class="col-md-2 col-lg">{{ 'order.total'|trans }}</th>
         </tr>
     </thead>
     <tbody>
         {% for product in order.products %}
-            <tr class="row">
-                <td class="col-md-6 col-lg-4">
-                    <div class="row">
+        <tr class="row">
+            <td class="col-md-6 col-lg-4">
+                <div class="row">
                     {% set thumb = product.product.images|first %}
-                        <div class="col-md">
-                            <img src="/img/upload/{{ thumb.name }}" alt="{{ thumb.description }}" class="img img-fluid">
-                        </div>
-                        <div class="col-md">
-                            {{ product.product.name }}
-                        </div>
+                    <div class="col-md">
+                        <img src="/img/upload/{{ thumb.name }}" alt="{{ thumb.description }}" class="img img-fluid">
                     </div>
-                </td>
-                <td class="col-md-2 col-lg">
-                    {{ product.product.price }} €
-                </td>
-                <td class="col-md-2 col-lg">
-                    {{ product.quantity }}
-                </td>
-                <td class="col-md-2 col-lg">
-                    {{ product.product.price * product.quantity }} €
-                </td>
-            </tr>
+                    <div class="col-md">
+                        {{ product.product.name }}
+                    </div>
+                </div>
+            </td>
+            <td class="col-md-2 col-lg">
+                {{ product.product.price }} €
+            </td>
+            <td class="col-md-2 col-lg">
+                {{ product.quantity }}
+            </td>
+            <td class="col-md-2 col-lg">
+                {{ product.product.price * product.quantity }} {{ 'base.currency_symbol'|trans}}
+            </td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>
-<p>Livraison: {{ order.shippingMethod.fee }} €</p>
-<p>Total: {{ order.transaction.total }} €</p>
+<p>{{ 'product.shipping_price'|trans({'%order_shippingMethod_fee%':  order.shippingMethod.fee }) }}</p>
+<p>{{ 'product.total_price'|trans({'%order_transaction_total%': order.transaction.total}) }}</p>
 
 {% endblock %}

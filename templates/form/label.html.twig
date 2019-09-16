@@ -1,9 +1,9 @@
 {% extends 'bootstrap_4_layout.html.twig' %}
 
 {% block form_label %}
-    {{ parent() }}
+{{ parent() }}
 
-    {% if required %}
-        <span class="form-required text-danger" title="Ce champ est requis">*</span>
-    {% endif %}
+{% if required %}
+<span class="form-required text-danger" title="{{ 'order.field_require'|trans }}">*</span>
+{% endif %}
 {% endblock %}

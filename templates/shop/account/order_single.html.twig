@@ -1,10 +1,10 @@
 {% extends 'shop/layout.html.twig' %}
-{% block title %}Commande # {{ order.id }}{% endblock title %}
+{% block title %}{{ 'order.id'|trans({'%order_id%': order.id}) }}{% endblock title %}
 
 {% block shop_content %}
 
 <header>
-    <h1>Commande # {{ order.id }}</h1>
+    <h1>{{  'order.id'|trans({'%order_id%': order.id}) }}</h1>
 </header>
 
 {% endblock %}

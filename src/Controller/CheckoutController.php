@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -8,6 +9,7 @@ use App\Entity\Basket;
 use App\Form\AddressType;
 use App\Repository\AddressRepository;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class CheckoutController extends AbstractController
 {
@@ -27,7 +29,7 @@ class CheckoutController extends AbstractController
         $this->session = new Session();
     }
 
-    public function address(Request $req, AddressRepository $addressRepository)
+    public function address(Request $req, AddressRepository $addressRepository, TranslatorInterface $translator)
     {
         if (!$this->basket->hasProducts()) {
             return $this->redirectToRoute('basket_show');
@@ -35,19 +37,19 @@ class CheckoutController extends AbstractController
         $billingAddress = $addressRepository
             ->findCurrentWithType($this->getUser()->getId(), 'billing');
         if (null === $billingAddress) {
-            $this->addFlash('info', 'Veuillez renseigner une adresse de facturation avant de continuer');
+            $this->addFlash('info', $translator->trans('product.miss_billing_address'));
             return $this->redirectToRoute('user_account');
         }
 
         $address = $addressRepository
             ->findCurrentWithType($this->getUser()->getId(), 'shipping');
         $form = $this->createForm(AddressType::class, $address);
-        
+
         $form->handleRequest($req);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $address = $form->getData();
-           
+
             $uow = $this->getDoctrine()
                 ->getManager()
                 ->getUnitOfWork();
@@ -59,9 +61,10 @@ class CheckoutController extends AbstractController
             }
 
             $address->setType('shipping')
-                    ->setCountry('France')
-                    ->setUser($this->getUser());
-            
+                //TODO: define country by config
+                ->setCountry('France')
+                ->setUser($this->getUser());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($address);
             $em->flush();
@@ -88,7 +91,7 @@ class CheckoutController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $shippingMethod = $form->getData()['shippingMethod'];
-            
+
             $this->basket->addShippingMethod($shippingMethod);
 
             $this->session->set('checkout/shipping', true);
@@ -113,7 +116,7 @@ class CheckoutController extends AbstractController
         $vatPrice = $this->basket->vatPrice($this->basket->grandTotal());
         $shippingFee = $this->basket->getShippingMethod()->getFee();
         $grandTotal = $this->basket->grandTotal();
-        
+
         return $this->render('shop/checkout/summary.html.twig', [
             'products' => $products,
             'total_price' => $totalPrice,

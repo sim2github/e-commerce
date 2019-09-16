@@ -1,38 +1,38 @@
 {% extends 'admin/layout.html.twig' %}
-{% block title %}Commandes{% endblock title %}
+{% block title %}{{ 'user.orders'|trans }}{% endblock title %}
 
 {% block admin_content %}
 <header class="mb-4">
-    <h1>Commandes</h1>
+    <h1>{{ 'user.orders'|trans }}</h1>
 </header>
 
 <table class="table table-hover">
     <thead>
         <tr>
             <th>#</th>
-            <th>Date</th>
-            <th>Statut</th>
-            <th>Total</th>
+            <th>{{ 'base.date'|trans }}</th>
+            <th>{{ 'base.status'|trans }}</th>
+            <th>{{ 'order.total'|trans }}</th>
         </tr>
     </thead>
     <tbody>
         {% for order in orders %}
-            <tr>
-                <td>
-                    <a href="{{ path('admin_order-show', { 'id': order.id }) }}">{{ order.id }}</a>
-                </td>
-                <td>
-                    {{ order.dateCreated|date('d/m/Y à H\\hi', 'Europe/Paris') }}
-                </td>
-                <td>
-                    <div class="badge badge-primary p-2">
-                       {{ order.status }} 
-                    </div>
-                </td>
-                <td>
-                    {{ order.transaction.total }} €
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <a href="{{ path('admin_order-show', { 'id': order.id }) }}">{{ order.id }}</a>
+            </td>
+            <td>
+                {{ order.dateCreated|date('d/m/Y à H\\hi', 'Europe/Paris') }}
+            </td>
+            <td>
+                <div class="badge badge-primary p-2">
+                    {{ order.status }}
+                </div>
+            </td>
+            <td>
+                {{ order.transaction.total }} €
+            </td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>

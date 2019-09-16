@@ -1,16 +1,16 @@
 {% extends 'shop/layout.html.twig' %}
-{% block title %}Adresse{% endblock %}
+{% block title %}{{ 'user.address'|trans }}{% endblock %}
 
 {% block breadcrumb %}
 <div class="breadcrumbs">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
-            <li class="breadcrumb-item">Identification</li>
-            <li class="breadcrumb-item active" aria-current="page">Adresse</li>
-            <li class="breadcrumb-item">Livraison</li>
-            <li class="breadcrumb-item">Récapitulatif</li>
-            <li class="breadcrumb-item">Paiement</li>
+                <li class="breadcrumb-item">{{ 'user.identification'|trans }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ 'user.address'|trans }}</li>
+                <li class="breadcrumb-item">{{ 'base.delivery'|trans }}</li>
+                <li class="breadcrumb-item">{{ 'user.summary'|trans }}</li>
+                <li class="breadcrumb-item">{{ 'base.payment'|trans }}</li>
             </ol>
         </nav>
     </div>
@@ -19,11 +19,11 @@
 
 {% block shop_content %}
 <header class="mb-4">
-    <h1>Adresse de livraison</h1>
+    <h1>{{ 'user.delivery_address'|trans }}</h1>
 </header>
 
 {{ form_start(address_form, { 'attr': { 'id': 'address-form' }}) }}
-    {% include "shop/account/address_form.html.twig" with {'address_form': address_form} %}
+{% include "shop/account/address_form.html.twig" with {'address_form': address_form} %}
 {{ form_end(address_form) }}
 <input type="submit" form="address-form" value="Suivant" class="btn btn-primary">
 

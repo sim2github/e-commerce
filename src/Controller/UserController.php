@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,20 +28,20 @@ class UserController extends AbstractController
     public function editAddress(AddressRepository $addressRepository): Response
     {
         $user = $this->getUser();
-        
+
         $address = $addressRepository->findCurrentWithType($user->getId(), 'billing');
 
         $userContact = new \App\Form\Model\UserContact($user, $address);
-        
+
         $form = $this->createForm(UserContactType::class, $userContact);
-        
+
         $masterRequest = $this->get('request_stack')->getMasterRequest();
         $form->handleRequest($masterRequest);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $userContact = $form->getData();
             $address = $userContact->getAddress();
-            
+
             $uow = $this->getDoctrine()
                 ->getManager()
                 ->getUnitOfWork();
@@ -52,12 +53,13 @@ class UserController extends AbstractController
             }
 
             $user->setFirstName($userContact->getFirstName())
-                 ->setLastName($userContact->getLastName());
+                ->setLastName($userContact->getLastName());
 
             $address->setUser($user)
-                    ->setCountry('France')
-                    ->setType('billing');
-            
+                //TODO: get default country
+                ->setCountry('France')
+                ->setType('billing');
+
             if ($uow->isEntityScheduled($address)) {
                 $address = clone $address;
                 $address->setDateCreated(new \DateTime());
